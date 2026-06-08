@@ -1,6 +1,9 @@
 name: Update calendar
 
 on:
+  push:
+    branches:
+      - main
   schedule:
     # 16:00-22:00 Asia/Shanghai and Asia/Taipei, expressed in UTC.
     - cron: "0 8-14 * * *"
