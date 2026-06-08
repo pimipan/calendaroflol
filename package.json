@@ -1,0 +1,14 @@
+{
+  "name": "calendaroflol",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Generate an auto-updating LoL Esports iCalendar subscription feed.",
+  "scripts": {
+    "build": "node scripts/build-calendar.mjs",
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
