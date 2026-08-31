@@ -60,13 +60,23 @@ jobs:
     if: github.event_name == 'schedule'
     runs-on: ubuntu-latest
     permissions:
-      actions: write
+      contents: write
     steps:
-      - name: Refresh workflow activation
-        env:
-          GH_TOKEN: ${{ github.token }}
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Keep repository active
         run: |
-          workflow="${GITHUB_WORKFLOW_REF%%@*}"
-          workflow="${workflow#${GITHUB_REPOSITORY}/.github/workflows/}"
-          gh api --method PUT \
-            "repos/${GITHUB_REPOSITORY}/actions/workflows/${workflow}/enable"
+          last_commit=$(git log -1 --format=%ct)
+          now=$(date +%s)
+          age_days=$(( (now - last_commit) / 86400 ))
+
+          if (( age_days < 45 )); then
+            echo "Latest repository activity is ${age_days} days old; no keepalive commit needed."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit --allow-empty -m "chore: keep scheduled workflow active"
+          git push
