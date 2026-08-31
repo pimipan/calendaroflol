@@ -55,7 +55,7 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v4
 
-          keepalive:
+  keepalive:
     name: Keep scheduled workflow enabled
     if: github.event_name == 'schedule'
     runs-on: ubuntu-latest
