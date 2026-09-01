@@ -163,7 +163,7 @@ function buildIndexHtml({ calendarName, calendarUrl, generatedAt, eventCount }) 
 <body>
   <main>
     <h1>${escapedCalendarName}</h1>
-    <p>訂閱 LoL Esports 的 First Stand、LCK、MSI、Worlds 賽程。</p>
+    <p>訂閱 LoL Esports 的 First Stand、LCK、LPL、MSI、Worlds 賽程。</p>
     <p>目前 feed 包含 ${eventCount} 個事件。最後更新：${escapeHtml(generatedAt.toISOString())}</p>
     <p><code>${escapedCalendarUrl}</code></p>
     <div class="actions">

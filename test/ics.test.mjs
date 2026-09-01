@@ -1,6 +1,19 @@
 import test from "node:test";
 import assert from "node:assert/strict";
+import { DEFAULT_SOURCE_URL, LEAGUES } from "../src/config.mjs";
 import { buildCalendar, escapeText, foldLine, formatUtcDate } from "../src/ics.mjs";
+
+test("includes LPL in the configured leagues and source URL", () => {
+  assert.deepEqual(
+    LEAGUES.find((league) => league.slug === "lpl"),
+    {
+      name: "LPL",
+      slug: "lpl",
+      id: "98767991314006698"
+    }
+  );
+  assert.match(DEFAULT_SOURCE_URL, /(?:^|,)lpl(?:,|$)/);
+});
 
 test("formats UTC dates for iCalendar", () => {
   assert.equal(formatUtcDate(new Date("2026-06-12T08:00:00.000Z")), "20260612T080000Z");
@@ -19,7 +32,7 @@ test("builds a calendar with stable LoL Esports event fields", () => {
   const calendar = buildCalendar({
     calendarName: "calendaroflol",
     productId: "-//test//EN",
-    sourceUrl: "https://lolesports.com/zh-TW/leagues/first_stand,lck,msi,worlds",
+    sourceUrl: "https://lolesports.com/zh-TW/leagues/first_stand,lck,lpl,msi,worlds",
     generatedAt: new Date("2026-06-08T08:00:00Z"),
     now: new Date("2026-06-08T08:00:00Z"),
     pastDays: 7,

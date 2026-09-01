@@ -4,6 +4,7 @@ An auto-updating iCalendar subscription feed for selected LoL Esports leagues:
 
 - First Stand
 - LCK
+- LPL
 - MSI
 - Worlds
 

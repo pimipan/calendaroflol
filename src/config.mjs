@@ -1,7 +1,7 @@
 export const DEFAULT_API_KEY = "0TvQnueqKa5mxJntVWt0w4LpLfEkrV1Ta8rQBb9Z";
 
 export const DEFAULT_SOURCE_URL =
-  "https://lolesports.com/zh-TW/leagues/first_stand,lck,msi,worlds";
+  "https://lolesports.com/zh-TW/leagues/first_stand,lck,lpl,msi,worlds";
 
 export const LEAGUES = [
   {
@@ -13,6 +13,11 @@ export const LEAGUES = [
     name: "LCK",
     slug: "lck",
     id: "98767991310872058"
+  },
+  {
+    name: "LPL",
+    slug: "lpl",
+    id: "98767991314006698"
   },
   {
     name: "MSI",
